@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courses</title>
+</head>
+<body>
+    <h1>Courses</h1>
+    <ul>
+        {% for course in courses %}
+            <li>{{ course.name }} ({{ course.code }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add a New Course</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

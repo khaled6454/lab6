@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ student.first_name }}'s Details</title>
+</head>
+<body>
+    <h2>{{ student.first_name }} {{ student.last_name }}</h2>
+    <h3>Email: {{ student.email }}</h3>
+    <h3>Enrollment Year: {{ student.enrollment_year }}</h3>
+    <h3>Courses:</h3>
+    <ul>
+        {% for course in student.courses.all %}
+        <li>{{ course.name }} ({{ course.code }})</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Enroll in a New Course</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enroll</button>
+    </form>
+
+    <a href="{% url 'students' %}">Back to Students List</a>
+</body>
+</html>
